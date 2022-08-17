@@ -1,12 +1,9 @@
 const Usuarios = require("../modelos/usuarios")
-
 const { handleHttpError, handleErrorResponse } = require("../utilidades/handleError")
 const { matchedData } = require('express-validator')
 const { encriptar } = require("../utilidades/handlePassword")
 const { tokenSign, generarToken } = require("../utilidades/handleToken")
 const { Op } = require("sequelize")
-
-
 const create = async (req, res) => {
     try {
         body = matchedData(req)
@@ -24,7 +21,6 @@ const create = async (req, res) => {
         return
     }
 }
-
 const getitems = async (req, res) => {
     try {
         const response = await Usuarios.findAll({
@@ -38,7 +34,6 @@ const getitems = async (req, res) => {
         return
     }
 }
-
 const update = async (req, res) => {
     try {
         const response = await Usuarios.findByPk(req.params.id)
@@ -50,7 +45,6 @@ const update = async (req, res) => {
         handleErrorResponse(res, "error al modificar usuario")
     }
 }
-
 const eliminar = async (req, res) => {
     try {
         const response = await Usuarios.findByPk(req.params.id)
@@ -62,7 +56,6 @@ const eliminar = async (req, res) => {
         return
     }
 }
-
 const cambiarContrasena = async (req, res) => {
     try {
         const response = await Usuarios.findByPk(req.params.id)
@@ -75,7 +68,6 @@ const cambiarContrasena = async (req, res) => {
         return
     }
 }
-
 const login = async (req, res) => {
     const { body } = req
     const usuario = await Usuarios.findOne({ where: { nombres: body.nombres } })
@@ -92,7 +84,6 @@ const login = async (req, res) => {
 }
 const generarUsuarios = async (req, res) => {
     for (let i = 0; i < req.params.valor; i++) {
-
         const body = {
             nroDoc: `${i + 1}`,
             nombres: `nombre${i + 1}`,
@@ -110,7 +101,6 @@ const pruebas = async (req, res) => {
     const sizeAsNumber = Number.parseInt(req.params.tamano)
     let page = !Number.isNaN(pageAsNumber) && pageAsNumber > 0 ? pageAsNumber - 1 : 0
     let size = !Number.isNaN(sizeAsNumber) && sizeAsNumber < 10 ? sizeAsNumber : 10
-
     const response = await Usuarios.findAndCountAll({
         limit: size,
         offset: page * size,
