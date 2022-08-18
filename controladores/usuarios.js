@@ -28,7 +28,7 @@ const getitems = async (req, res) => {
             order: [['id', 'DESC']],
             where: { eliminar: 0 }
         })
-        res.send(response)
+        res.send({ response: true, message: response })
     } catch (error) {
         handleErrorResponse(res, "error al obtener items")
         return

@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize')
 const Usuarios = sequelize.define('usuarios',
     {
         nroDoc: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             unique: true,
         },
         nombres: {
