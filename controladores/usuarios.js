@@ -4,11 +4,19 @@ const { matchedData } = require('express-validator')
 const { encriptar } = require("../utilidades/handlePassword")
 const { tokenSign, generarToken } = require("../utilidades/handleToken")
 const { Op } = require("sequelize")
+
 const create = async (req, res) => {
     try {
         body = matchedData(req)
-        const ckeckDNI = await Usuarios.findOne({ where: { nroDoc: body.nroDoc } })
-        if (ckeckDNI) {
+        const check = await Usuarios.findOne({
+            where: {
+                [Op.or]: [
+                    { nroDoc: body.nroDoc },
+                    { correo: body.correo }
+                ]
+            }
+        })
+        if (check) {
             handleErrorResponse(res, `el usuario ya existe con ese numero de DNI ${body.nroDoc}`, 409)
             return
         }
@@ -21,6 +29,19 @@ const create = async (req, res) => {
         return
     }
 }
+
+const eliminar = async (req, res) => {
+    try {
+        const response = await Usuarios.findByPk(req.params.id)
+        response.set({ eliminar: true })
+        await response.save()
+        res.send({ response: true, message: "usuario eliminado" })
+    } catch (error) {
+        handleErrorResponse(res, "error al eliminar")
+        return
+    }
+}
+
 const getitems = async (req, res) => {
     try {
         const response = await Usuarios.findAll({
@@ -34,6 +55,7 @@ const getitems = async (req, res) => {
         return
     }
 }
+
 const update = async (req, res) => {
     try {
         const response = await Usuarios.findByPk(req.params.id)
@@ -45,17 +67,7 @@ const update = async (req, res) => {
         handleErrorResponse(res, "error al modificar usuario")
     }
 }
-const eliminar = async (req, res) => {
-    try {
-        const response = await Usuarios.findByPk(req.params.id)
-        response.set({ eliminar: true })
-        await response.save()
-        res.send({ response: true })
-    } catch (error) {
-        handleErrorResponse(res, "error al eliminar")
-        return
-    }
-}
+
 const cambiarContrasena = async (req, res) => {
     try {
         const response = await Usuarios.findByPk(req.params.id)
@@ -88,7 +100,7 @@ const generarUsuarios = async (req, res) => {
             nroDoc: `${i + 1}`,
             nombres: `nombre${i + 1}`,
             apellidos: `apellido${i + 1}`,
-            correo: ` correo${i + 1}`,
+            correo: `correo${i + 1}@outlook.com`,
             password: `password${i + 1}`,
             rol: "admin"
         }

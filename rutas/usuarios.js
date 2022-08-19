@@ -7,12 +7,16 @@ const { validadorRegistroUsuario, validadorContrasena, validadorEditarUsuario } 
 const router = express.Router()
 
 router.post("/", validadorRegistroUsuario, create)
+router.delete("/:id", eliminar)
 router.get("/", getitems)
+
 router.put("/:id", validadorEditarUsuario, update)
-router.put("/:id", eliminar)
+
+
 router.put("/cambiarcontrasena/:id", validadorContrasena, cambiarContrasena)
 
 router.get("/generarusuarios/:valor", generarUsuarios)
+
 router.get("/pruebas/:pagina", pruebas)
 
 router.post("/subirimagen", subirImagen.single("imagen"), getitems)
