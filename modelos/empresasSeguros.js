@@ -30,7 +30,6 @@ const EmpresasSeguros = sequelize.define('empresas_seguros',
         logo: {
             type: DataTypes.STRING,
         },
-
     },
     {
         timestamps: false
