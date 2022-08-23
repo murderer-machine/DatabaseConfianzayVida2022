@@ -32,7 +32,7 @@ const EmpresasSeguros = sequelize.define('empresas_seguros',
         },
     },
     {
-        timestamps: false
+        timestamps: true
     }
 )
 
