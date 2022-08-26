@@ -3,7 +3,7 @@ const { validateResult } = require('../utilidades/handleValidador')
 
 const validadorActualizar = [
     check("nombre")
-        .exists().withMessage(`Nombre es requerido`)
+        .exists().withMessage("Nombre es requerido")
         .notEmpty().withMessage("Nombre no puede estar vacio")
         .isString().withMessage("Nombre debe ser una cadena de texto"),
     check("ruc")
@@ -12,7 +12,7 @@ const validadorActualizar = [
     check("factorGeneral")
         .exists().withMessage("Factor General es requerido")
         .notEmpty().withMessage("Factor General no puede estar vacio")
-        .isDecimal().withMessage("factor General debe ser un numero decimal"),
+        .isDecimal().withMessage("Factor General debe ser un numero decimal"),
     check("factorSoat")
         .exists().withMessage("Factor Soat es requerido")
         .notEmpty().withMessage("Factor Soat no puede estar vacio")
@@ -29,6 +29,8 @@ const validadorActualizar = [
         .exists().withMessage("Gastos Emision Minimo Soat es requerido")
         .notEmpty().withMessage("Gastos Emision Minimo Soat no puede estar vacio")
         .isDecimal().withMessage("Gastos Emision Minimo Soat debe ser un numero decimal"),
+    check("activo")
+        .exists().withMessage("Gastos Emision Minimo Soat es requerido"),
     (req, res, next) => {
         validateResult(req, res, next)
     }
