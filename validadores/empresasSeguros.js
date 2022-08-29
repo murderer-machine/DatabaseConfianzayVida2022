@@ -30,7 +30,7 @@ const validadorActualizar = [
         .notEmpty().withMessage("Gastos Emision Minimo Soat no puede estar vacio")
         .isDecimal().withMessage("Gastos Emision Minimo Soat debe ser un numero decimal"),
     check("activo")
-        .exists().withMessage("Gastos Emision Minimo Soat es requerido"),
+        .exists().withMessage("Estado es requerido"),
     (req, res, next) => {
         validateResult(req, res, next)
     }
