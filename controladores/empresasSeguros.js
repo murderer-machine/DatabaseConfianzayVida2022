@@ -2,7 +2,6 @@
 const EmpresasSeguros = require('../modelos/empresasSeguros')
 const { matchedData } = require('express-validator')
 const { handleErrorResponse } = require('../utilidades/handleError')
-
 const leer = async (req, res) => {
     try {
         const response = await EmpresasSeguros.findAll({
@@ -43,12 +42,14 @@ const eliminar = async (req, res) => {
 }
 const insertar = async (req, res) => {
     try {
-        body = matchedData(req)    
+        body = matchedData(req)
+        console.log(body)
         const response = await EmpresasSeguros.create(body)
-        res.send({ response: true,message: "Insertado correctamente" })
+        console.log(body)
+        res.send({ response: true, message: "Insertado correctamente" })
     } catch (error) {
         handleErrorResponse(res, "error al crear usuario")
         return
     }
 }
-module.exports = { leer, actualizar, eliminar,insertar }
+module.exports = { leer, actualizar, eliminar, insertar }

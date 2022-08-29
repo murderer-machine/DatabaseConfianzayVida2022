@@ -12,23 +12,28 @@ const validadorActualizar = [
     check("factorGeneral")
         .exists().withMessage("Factor General es requerido")
         .notEmpty().withMessage("Factor General no puede estar vacio")
-        .isDecimal().withMessage("Factor General debe ser un numero decimal"),
+        .isDecimal().withMessage("Factor General debe ser un numero decimal")
+        .matches(/^((?!0)\d{1,10}|0|\.\d{1,4})($|\.$|\.\d{1,4}$)/).withMessage("Factor General debe ser un numero decimal , con 2 decimales ó 4 decimales"),
     check("factorSoat")
         .exists().withMessage("Factor Soat es requerido")
         .notEmpty().withMessage("Factor Soat no puede estar vacio")
-        .isDecimal().withMessage("Factor Soat debe ser un numero decimal"),
+        .isDecimal().withMessage("Factor Soat debe ser un numero decimal")
+        .matches(/^((?!0)\d{1,10}|0|\.\d{1,4})($|\.$|\.\d{1,4}$)/).withMessage("Factor General debe ser un numero decimal , con 2 decimales ó 4 decimales"),
     check("gastosEmision")
         .exists().withMessage("Gastos Emision es requerido")
         .notEmpty().withMessage("Gastos Emision no puede estar vacio")
-        .isDecimal().withMessage("Gastos Emision debe ser un numero decimal"),
+        .isDecimal().withMessage("Gastos Emision debe ser un numero decimal")
+        .matches(/^((?!0)\d{1,10}|0|\.\d{1,4})($|\.$|\.\d{1,4}$)/).withMessage("Factor General debe ser un numero decimal , con 2 decimales ó 4 decimales"),
     check("gastosEmisionMinimo")
         .exists().withMessage("Gastos Emision Minimo es requerido")
         .notEmpty().withMessage("Gastos Emision Minimo no puede estar vacio")
-        .isDecimal().withMessage("Gastos Emision Minimo debe ser un numero decimal"),
+        .isDecimal().withMessage("Gastos Emision Minimo debe ser un numero decimal")
+        .matches(/^((?!0)\d{1,10}|0|\.\d{1,4})($|\.$|\.\d{1,4}$)/).withMessage("Factor General debe ser un numero decimal , con 2 decimales ó 4 decimales"),
     check("gastosEmisionMinimoSoat")
         .exists().withMessage("Gastos Emision Minimo Soat es requerido")
         .notEmpty().withMessage("Gastos Emision Minimo Soat no puede estar vacio")
-        .isDecimal().withMessage("Gastos Emision Minimo Soat debe ser un numero decimal"),
+        .isDecimal().withMessage("Gastos Emision Minimo Soat debe ser un numero decimal")
+        .matches(/^((?!0)\d{1,10}|0|\.\d{1,4})($|\.$|\.\d{1,4}$)/).withMessage("Factor General debe ser un numero decimal , con 2 decimales ó 4 decimales"),
     check("activo")
         .exists().withMessage("Estado es requerido"),
     (req, res, next) => {
