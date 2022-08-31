@@ -9,7 +9,7 @@ const EmpresasSegurosProductos = sequelize.define('empresas_seguros_productos',
         empresasSeguroId: {
             type: DataTypes.INTEGER,
         },
-        id_ramo: {
+        ramoId: {
             type: DataTypes.INTEGER
         },
         comision: {
