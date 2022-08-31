@@ -1,0 +1,2 @@
+table empresas_seguros add eliminar
+table empresas_seguros_productos change ramoId
