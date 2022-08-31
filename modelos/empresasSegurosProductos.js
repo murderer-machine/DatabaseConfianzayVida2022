@@ -14,6 +14,9 @@ const EmpresasSegurosProductos = sequelize.define('empresas_seguros_productos',
         },
         comision: {
             type: DataTypes.DECIMAL
+        },
+        eliminar: {
+            type: DataTypes.BOOLEAN,
         }
     },
     {
