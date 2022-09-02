@@ -39,5 +39,17 @@ const eliminar = async (req, res) => {
         return
     }
 }
-
-module.exports = { leer, eliminar }
+const actualizar = async (req, res) => {
+    try {
+        const { body } = req
+        console.log(body)
+        const response = await EmpresasSegurosProductos.findByPk(body.id)
+        response.set(body)
+        await response.save()
+        res.send({ response: true, message: 'actualizado correctamente' })
+    } catch (error) {
+        handleErrorResponse(res, "error al actualizar item")
+        return
+    }
+}
+module.exports = { leer, eliminar, actualizar }
