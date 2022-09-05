@@ -9,7 +9,7 @@ const EmpresasSegurosProductos = require('../modelos/empresasSegurosProductos')
 const Ramos = require('../modelos/ramos')
 const PolizasDescripciones = require('../modelos/polizasDescripciones')
 const PolizasVehiculos = require('../modelos/polizasVehiculos')
-
+const Monedas = require('../modelos/monedas')
 
 Clientes.hasMany(Polizas)
 Polizas.belongsTo(Clientes)
@@ -56,7 +56,8 @@ module.exports = {
     Ramos,
     PolizasDescripciones,
     PolizasVehiculos,
-    Ramos
+    Ramos,
+    Monedas
 }
 
 

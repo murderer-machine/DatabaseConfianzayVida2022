@@ -5,9 +5,11 @@ const EmpresasSeguros = sequelize.define('empresas_seguros',
     {
         nombre: {
             type: DataTypes.STRING,
+            unique: true,
         },
         ruc: {
             type: DataTypes.STRING,
+            unique: true,
         },
         factorGeneral: {
             type: DataTypes.DECIMAL,
@@ -26,6 +28,7 @@ const EmpresasSeguros = sequelize.define('empresas_seguros',
         },
         activo: {
             type: DataTypes.BOOLEAN,
+            defaultValue: true
         },
         logo: {
             type: DataTypes.STRING,

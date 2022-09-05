@@ -43,9 +43,7 @@ const eliminar = async (req, res) => {
 const insertar = async (req, res) => {
     try {
         body = matchedData(req)
-        console.log(body)
         const response = await EmpresasSeguros.create(body)
-        console.log(body)
         res.send({ response: true, message: "Insertado correctamente" })
     } catch (error) {
         handleErrorResponse(res, "error al crear usuario")

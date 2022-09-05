@@ -21,6 +21,7 @@ const leer = async (req, res) => {
             where: {
                 eliminar: false
             },
+            order: [['id', 'DESC']]
         })
         res.send({ response: true, message: response })
     } catch (error) {
@@ -42,7 +43,7 @@ const eliminar = async (req, res) => {
 const actualizar = async (req, res) => {
     try {
         const { body } = req
-        console.log(body)
+
         const response = await EmpresasSegurosProductos.findByPk(body.id)
         response.set(body)
         await response.save()
@@ -52,4 +53,14 @@ const actualizar = async (req, res) => {
         return
     }
 }
-module.exports = { leer, eliminar, actualizar }
+const insertar = async (req, res) => {
+    try {
+        body = matchedData(req)
+        const response = await EmpresasSegurosProductos.create(body)
+        res.send({ response: true, message: "Insertado correctamente" })
+    } catch (error) {
+        handleErrorResponse(res, "error al crear usuario")
+        return
+    }
+}
+module.exports = { leer, eliminar, actualizar, insertar }

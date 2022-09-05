@@ -35,7 +35,8 @@ const validadorActualizar = [
         .isDecimal().withMessage("Gastos Emision Minimo Soat debe ser un numero decimal")
         .matches(/^((?!0)\d{1,10}|0|\.\d{1,4})($|\.$|\.\d{1,4}$)/).withMessage("Factor General debe ser un numero decimal , con 2 decimales ó 4 decimales"),
     check("activo")
-        .exists().withMessage("Estado es requerido"),
+        .exists().withMessage("Estado es requerido")
+        .notEmpty().withMessage("Estado no puede estar vacio"),
     (req, res, next) => {
         validateResult(req, res, next)
     }

@@ -17,10 +17,11 @@ const EmpresasSegurosProductos = sequelize.define('empresas_seguros_productos',
         },
         eliminar: {
             type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     },
     {
-        timestamps: false
+        timestamps: true
     }
 )
 module.exports = EmpresasSegurosProductos
