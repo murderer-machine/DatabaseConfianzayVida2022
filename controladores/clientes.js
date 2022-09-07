@@ -1,15 +1,10 @@
 
 const Clientes = require("../modelos/clientes")
-const Documentos = require("../modelos/documentos")
 const { handleHttpError, handleErrorResponse } = require("../utilidades/handleError")
-
-const getAll = async (req, res) => {
-    Documentos.hasOne(Clientes, { foreignKey: 'documentoId' })
-    Clientes.belongsTo(Documentos)
+const leer = async (req, res) => {
     try {
         const response = await Clientes.findAll({
             order: [['id', 'DESC']],
-            include: { model: Documentos, attributes: ['descripcion'] }
         })
         res.send({ response: true, message: response })
     } catch (error) {
@@ -17,9 +12,7 @@ const getAll = async (req, res) => {
         return
     }
 }
-
-
-module.exports = { getAll }
+module.exports = { leer }
 
 
 

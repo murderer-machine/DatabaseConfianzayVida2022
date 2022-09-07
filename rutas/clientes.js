@@ -1,8 +1,8 @@
 const express = require("express")
-const { getAll } = require("../controladores/clientes")
+const { leer } = require("../controladores/clientes")
 const router = express.Router()
 
-router.get("/", getAll)
+router.get("/", leer)
 
 
 module.exports = router
