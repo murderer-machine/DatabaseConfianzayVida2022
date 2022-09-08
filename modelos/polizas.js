@@ -27,7 +27,12 @@ const Polizas = sequelize.define('polizas',
             type: DataTypes.STRING,
         },
         endosoAfavor: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        idUsuario: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
         },
         anulada: {
             type: DataTypes.BOOLEAN,
