@@ -11,6 +11,7 @@ const PolizasDescripciones = require('../modelos/polizasDescripciones')
 const PolizasVehiculos = require('../modelos/polizasVehiculos')
 const Monedas = require('../modelos/monedas')
 const EmpresasBancarias = require('../modelos/empresasBancarias')
+const PuntosVentas = require('../modelos/puntosVentas')
 
 Clientes.hasMany(Polizas)
 Polizas.belongsTo(Clientes)
@@ -45,6 +46,9 @@ PolizasVehiculos.belongsTo(Polizas)
 Ramos.hasMany(EmpresasSegurosProductos)
 EmpresasSegurosProductos.belongsTo(Ramos)
 
+Ubigeos.hasMany(PuntosVentas)
+PuntosVentas.belongsTo(Ubigeos)
+
 module.exports = {
     Usuarios,
     Clientes,
@@ -59,7 +63,8 @@ module.exports = {
     PolizasVehiculos,
     Ramos,
     Monedas,
-    EmpresasBancarias
+    EmpresasBancarias,
+    PuntosVentas
 }
 
 
