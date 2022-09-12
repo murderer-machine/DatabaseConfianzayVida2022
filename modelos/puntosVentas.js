@@ -19,7 +19,6 @@ const PuntosVentas = sequelize.define('puntos_ventas', {
     },
     ubigeoId: {
         type: DataTypes.INTEGER,
-        defaultValue: 0
     },
     comision: {
         type: DataTypes.DECIMAL,
@@ -34,7 +33,6 @@ const PuntosVentas = sequelize.define('puntos_ventas', {
     },
     observaciones: {
         type: DataTypes.TEXT,
-        defaultValue: 'Sin observaciones'
     },
     eliminar: {
         type: DataTypes.BOOLEAN,

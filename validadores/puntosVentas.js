@@ -22,16 +22,14 @@ const validador = [
         .exists().withMessage("Referencia es requerido")
         .notEmpty().withMessage("Referencia no puede estar vacio")
         .isString().withMessage("Referencia debe ser una cadena de texto"),
+    check("ubigeoId")
+        .exists().withMessage("Ubigeo es requerido")
+        .notEmpty().withMessage("Ubigeo no puede estar vacio"),
     check("comision")
         .exists().withMessage("Comision es requerido")
         .notEmpty().withMessage("Comision no puede estar vacio")
         .isDecimal().withMessage("Comision debe ser un numero decimal")
         .matches(/^((?!0)\d{1,10}|0|\.\d{1,2})($|\.$|\.\d{1,2}$)/).withMessage("Comision debe ser un numero decimal , con 2 decimales"),
-    check("fecha_activacion")
-        .exists().withMessage("Nombre es requerido")
-        .notEmpty().withMessage("Nombre no puede estar vacio")
-        .isDate().withMessage("Nombre debe ser una fecha"),
-
     (req, res, next) => {
         validateResult(req, res, next)
     }
