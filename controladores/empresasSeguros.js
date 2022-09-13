@@ -1,5 +1,5 @@
 
-const EmpresasSeguros = require('../modelos/empresasSeguros')
+const {EmpresasSeguros} = require('../modelos')
 const { matchedData } = require('express-validator')
 const { handleErrorResponse } = require('../utilidades/handleError')
 const leer = async (req, res) => {

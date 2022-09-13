@@ -1,5 +1,5 @@
 
-const EmpresasBancarias = require("../modelos/empresasBancarias")
+const {EmpresasBancarias} = require("../modelos")
 const { handleHttpError, handleErrorResponse } = require("../utilidades/handleError")
 const leer = async (req, res) => {
     try {

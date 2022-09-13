@@ -1,5 +1,5 @@
 
-const Ramos = require('../modelos/ramos')
+const { Ramos } = require('../modelos')
 const { handleErrorResponse } = require('../utilidades/handleError')
 const leer = async (req, res) => {
     try {

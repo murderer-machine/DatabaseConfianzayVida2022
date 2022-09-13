@@ -1,7 +1,5 @@
 
-const EmpresasSegurosProductos = require('../modelos/empresasSegurosProductos')
-const EmpresasSeguros = require('../modelos/empresasSeguros')
-const Ramos = require('../modelos/ramos')
+const { EmpresasSegurosProductos, EmpresasSeguros } = require('../modelos')
 const { Op } = require("sequelize")
 const { matchedData } = require('express-validator')
 const { handleErrorResponse } = require('../utilidades/handleError')

@@ -1,4 +1,4 @@
-const Usuarios = require("../modelos/usuarios")
+const { Usuarios } = require("../modelos")
 const { handleHttpError, handleErrorResponse } = require("../utilidades/handleError")
 const { matchedData } = require('express-validator')
 const { encriptar } = require("../utilidades/handlePassword")

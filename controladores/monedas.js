@@ -1,5 +1,5 @@
 
-const Monedas = require('../modelos/monedas')
+const {Monedas} = require('../modelos')
 const { matchedData } = require('express-validator')
 const { handleErrorResponse } = require('../utilidades/handleError')
 const leer = async (req, res) => {

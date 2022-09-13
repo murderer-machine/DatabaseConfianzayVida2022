@@ -1,7 +1,7 @@
 
 const { matchedData } = require('express-validator')
-const { handleErrorResponse } = require('../utilidades/handleError')
-const { Ubigeos,PuntosVentas } = require('../modelos')
+const { handleErrorResponse, handleHttpError } = require('../utilidades/handleError')
+const { Ubigeos, PuntosVentas } = require('../modelos')
 const leer = async (req, res) => {
     try {
         const response = await PuntosVentas.findAll({
@@ -44,10 +44,16 @@ const eliminar = async (req, res) => {
     }
 }
 const insertar = async (req, res) => {
+    console.log(req.body)
     try {
         body = matchedData(req)
+        console.log(body)
         const response = await PuntosVentas.create(body)
-        res.send({ response: true, message: "Insertado correctamente" })
+        res.send({ 
+            response: true, 
+            message: "Insertado correctamente",
+            data: response.id
+        })
     } catch (error) {
         handleErrorResponse(res, "error al crear usuario")
         return

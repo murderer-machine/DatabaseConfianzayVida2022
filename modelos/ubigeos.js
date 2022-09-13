@@ -4,11 +4,9 @@ const Ubigeos = sequelize.define('ubigeos',
     {
         departamento: {
             type: DataTypes.STRING,
-
         },
         provincia: {
             type: DataTypes.STRING,
-
         },
         distrito: {
             type: DataTypes.STRING,
