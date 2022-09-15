@@ -1,6 +1,5 @@
 const { check } = require('express-validator')
 const { validateResult } = require('../utilidades/handleValidador')
-
 const validadorActualizar = [
     check("nombre")
         .exists().withMessage("Nombre es requerido")
@@ -17,11 +16,7 @@ const validadorActualizar = [
         .notEmpty().withMessage("Comision no puede estar vacio")
         .isDecimal().withMessage("Comision debe ser un numero decimal")
         .matches(/^((?!0)\d{1,10}|0|\.\d{1,2})($|\.$|\.\d{1,2}$)/).withMessage("Comision debe ser un numero decimal , con 2 decimales"),
-
     (req, res, next) => {
         validateResult(req, res, next)
-    }
-]
-
-
+    }]
 module.exports = { validadorActualizar }

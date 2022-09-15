@@ -1,6 +1,5 @@
 const { check } = require('express-validator')
 const { validateResult } = require('../utilidades/handleValidador')
-
 const validador = [
     check("nombres")
         .exists().withMessage("Nombres es requerido")
@@ -37,6 +36,4 @@ const validador = [
         validateResult(req, res, next)
     }
 ]
-
-
 module.exports = { validador }

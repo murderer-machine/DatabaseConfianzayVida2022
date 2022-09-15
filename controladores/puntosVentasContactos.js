@@ -45,7 +45,6 @@ const insertar = async (req, res) => {
         res.send({ response: true, message: "Insertado correctamente" })
     } catch (error) {
         handleErrorResponse(res, "error al crear contacto")
-        // handleHttpError(res, error)
         return
     }
 }

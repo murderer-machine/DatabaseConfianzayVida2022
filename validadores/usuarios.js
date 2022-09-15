@@ -1,6 +1,5 @@
 const { check } = require('express-validator')
 const { validateResult } = require('../utilidades/handleValidador')
-
 const validadorRegistroUsuario = [
     check("nroDoc")
         .exists().withMessage(`nro de documento es requerido`)
