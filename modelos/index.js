@@ -13,6 +13,7 @@ const Monedas = require('../modelos/monedas')
 const EmpresasBancarias = require('../modelos/empresasBancarias')
 const PuntosVentas = require('../modelos/puntosVentas')
 const PuntosVentasContactos = require('../modelos/puntosVentasContactos')
+const MensajesWhatsapp = require('../modelos/mensajesWhatsapp')
 
 Clientes.hasMany(Polizas)
 Polizas.belongsTo(Clientes)
@@ -69,7 +70,8 @@ module.exports = {
     Monedas,
     EmpresasBancarias,
     PuntosVentas,
-    PuntosVentasContactos
+    PuntosVentasContactos,
+    MensajesWhatsapp
 }
 
 
