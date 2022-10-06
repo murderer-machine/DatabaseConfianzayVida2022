@@ -29,9 +29,6 @@ const validador = [
         .notEmpty().withMessage("Comision no puede estar vacio")
         .isDecimal().withMessage("Comision debe ser un numero decimal")
         .matches(/^((?!0)\d{1,10}|0|\.\d{1,2})($|\.$|\.\d{1,2}$)/).withMessage("Comision debe ser un numero decimal , con 2 decimales"),
-    check("observaciones")
-        .exists().withMessage("Observaciones es requerido")
-        .notEmpty().withMessage("Observaciones no puede estar vacio"),
     (req, res, next) => {
         validateResult(req, res, next)
     }

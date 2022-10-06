@@ -1,17 +1,18 @@
 
 const { matchedData } = require('express-validator')
 const { handleErrorResponse, handleHttpError } = require('../utilidades/handleError')
-const { Ubigeos, PuntosVentas } = require('../modelos')
+const { Ubigeos, PuntosVentas, PuntosVentasContactos } = require('../modelos')
 const leer = async (req, res) => {
     try {
         const response = await PuntosVentas.findAll({
-            include: [{
-                model: Ubigeos,
-            }],
-            where: {
+            where: [{
                 eliminar: false
-            },
-            order: [['id', 'DESC']]
+            }],
+            order: [['id', 'DESC']],
+            include: [
+                { model: Ubigeos },
+                { model: PuntosVentasContactos }
+            ]
         })
         res.send({ response: true, message: response })
     } catch (error) {
@@ -49,8 +50,8 @@ const insertar = async (req, res) => {
         body = matchedData(req)
         console.log(body)
         const response = await PuntosVentas.create(body)
-        res.send({ 
-            response: true, 
+        res.send({
+            response: true,
             message: "Insertado correctamente",
             data: response.id
         })

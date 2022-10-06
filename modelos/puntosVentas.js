@@ -33,6 +33,7 @@ const PuntosVentas = sequelize.define('puntos_ventas', {
     },
     observaciones: {
         type: DataTypes.TEXT,
+        defaultValue: '-'
     },
     eliminar: {
         type: DataTypes.BOOLEAN,
@@ -41,8 +42,7 @@ const PuntosVentas = sequelize.define('puntos_ventas', {
     whatsappId: {
         type: DataTypes.STRING,
         defaultValue: '0'
-    }
-
+    },
 }, {
     timestamps: true
 })

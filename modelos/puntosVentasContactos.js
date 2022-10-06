@@ -13,6 +13,14 @@ const PuntosVentasContactos = sequelize.define('puntos_ventas_contactos',
         },
         correo: {
             type: DataTypes.STRING
+        },
+        eliminar: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+        usuarioId: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
         }
     },
     {
