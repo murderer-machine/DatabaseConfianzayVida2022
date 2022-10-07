@@ -32,7 +32,6 @@ const actualizar = async (req, res) => {
         return
     }
 }
-
 const eliminar = async (req, res) => {
     try {
         const response = await PuntosVentas.findByPk(req.params.id)
