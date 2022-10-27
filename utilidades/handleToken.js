@@ -1,11 +1,9 @@
 const jwt = require("jsonwebtoken")
 
 const generarToken = async (dataUsuario) => {
-      
     return jwt.sign(
         {
             id: dataUsuario.id,
-           
         },
         process.env.JWT_SECRET,
         {

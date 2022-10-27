@@ -1,7 +1,7 @@
 const { Usuarios } = require("../modelos")
 const { handleHttpError, handleErrorResponse } = require("../utilidades/handleError")
 const { matchedData } = require('express-validator')
-const { encriptar } = require("../utilidades/handlePassword")
+const { encriptar, comparar } = require("../utilidades/handlePassword")
 const { tokenSign, generarToken } = require("../utilidades/handleToken")
 const { Op } = require("sequelize")
 
@@ -82,17 +82,14 @@ const cambiarContrasena = async (req, res) => {
 }
 const login = async (req, res) => {
     const { body } = req
-    const usuario = await Usuarios.findOne({ where: { nombres: body.nombres } })
-    if (!usuario) {
-        handleErrorResponse(res, "el usuario no existe", 404)
+    const usuario = await Usuarios.findAll({ where: { nroDoc: body.nroDoc, } })
+    const password = await comparar(body.password, usuario.length === 0 ? '' : usuario[0].password)
+    if (usuario.length === 0 || !password) {
+        handleErrorResponse(res, `Su usuario  y/o contraseña es inválido`, 404)
         return
     }
     const tokenJwt = await generarToken(usuario)
-    const data = {
-        token: tokenJwt,
-        uusuario: usuario
-    }
-    res.send({ data })
+    res.send({ response: true, message: 'Ingreso', token: tokenJwt })
 }
 const generarUsuarios = async (req, res) => {
     for (let i = 0; i < req.params.valor; i++) {
