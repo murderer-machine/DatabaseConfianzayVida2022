@@ -7,7 +7,7 @@ const generarToken = async (dataUsuario) => {
         },
         process.env.JWT_SECRET,
         {
-            expiresIn: "2m",
+            expiresIn: "5 days",
         }
     )
 }

@@ -1,5 +1,5 @@
 const express = require("express")
-const { create, update, eliminar, getitems, login, cambiarContrasena, generarUsuarios, pruebas } = require("../controladores/usuarios")
+const { create, update, eliminar, getitems, login, cambiarContrasena, generarUsuarios, pruebas, verificar } = require("../controladores/usuarios")
 const roles = require("../middleware/roles")
 const { subirImagen } = require("../utilidades/handleSubirImagen")
 
@@ -15,5 +15,6 @@ router.get("/generarusuarios/:valor", generarUsuarios)
 
 router.post("/subirimagen", subirImagen.single("imagen"), getitems)
 router.post("/login", login)
+router.get("/verificar/:token", verificar)
 
 module.exports = router

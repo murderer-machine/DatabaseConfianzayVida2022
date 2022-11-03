@@ -4,7 +4,7 @@ const { matchedData } = require('express-validator')
 const { encriptar, comparar } = require("../utilidades/handlePassword")
 const { tokenSign, generarToken } = require("../utilidades/handleToken")
 const { Op } = require("sequelize")
-
+const { verificarToken } = require("../utilidades/handleToken")
 const create = async (req, res) => {
     try {
         body = matchedData(req)
@@ -85,11 +85,16 @@ const login = async (req, res) => {
     const usuario = await Usuarios.findAll({ where: { nroDoc: body.nroDoc, } })
     const password = await comparar(body.password, usuario.length === 0 ? '' : usuario[0].password)
     if (usuario.length === 0 || !password) {
-        handleErrorResponse(res, `Su usuario  y/o contraseña es inválido`, 404)
+        handleErrorResponse(res, `Su usuario ${body.nroDoc} y/o contraseña es inválido`, 404)
         return
     }
     const tokenJwt = await generarToken(usuario)
     res.send({ response: true, message: 'Ingreso', token: tokenJwt })
+}
+const verificar = async (req, res) => {
+    const tokenData = await verificarToken(req.params.token)
+    tokenData ? res.send({ response: true }) : res.send({ response: false })
+
 }
 const generarUsuarios = async (req, res) => {
     for (let i = 0; i < req.params.valor; i++) {
@@ -117,7 +122,7 @@ const pruebas = async (req, res) => {
     response['totalPaginas'] = Math.ceil(response.count / size)
     res.send(response)
 }
-module.exports = { create, update, getitems, eliminar, login, cambiarContrasena, generarUsuarios, pruebas }
+module.exports = { create, update, getitems, eliminar, login, cambiarContrasena, generarUsuarios, pruebas,verificar }
 
 
 
